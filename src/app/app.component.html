@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>Employee List</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><a id="name" class="filter__link" href="#">#</a></th>
+        <th><a id="name" class="filter__link" href="#">Name</a></th>
+        <th><a id="wins" class="filter__link filter__link--number" href="#">Job Title</a></th>
+        <th><a id="draws" class="filter__link filter__link--number" href="#">Age</a></th>
+        <th><a id="losses" class="filter__link filter__link--number" href="#">Start Date</a></th>
+        <th><a id="total" class="filter__link filter__link--number" href="#">End Date</a></th>
+        <th>
+          <a id="total" class="filter__link filter__link--number" href="#"
+            >Action<img alt="not found" src="../assets/images/add_Action.png" (click)="openModal('custom-modal-1')"
+          /></a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <div>
+        <app-filter [columns]="filterColumns" (onFilterChange)="onFilterChange($event)" (handleResetFilter)="handleResetFilter($event)"></app-filter>
+      </div>
+      <tr class="table-row" *ngFor="let employee of employees | search : filterObject">
+        <th class="table-data">{{ employee.serialNumber }}</th>
+        <td class="table-data">{{ employee.employeeName }}</td>
+        <td class="table-data">{{ employee.jobTitle }}</td>
+        <td class="table-data">{{ employee.age }}</td>
+        <td class="table-data">{{ employee.startDate | date : "yyyy-MM-dd" }}</td>
+        <td class="table-data">
+          <span *ngIf="employee.endDate">{{ employee.endDate | date : "yyyy-MM-dd" }}</span
+          ><span *ngIf="!employee.endDate" class="span-class">Currently Working</span>
+        </td>
+        <td class="table-data">
+          <div>
+            <img alt="not found" src="../assets/images/show.png" (click)="onEdit(employee)"/>
+            <img alt="not found" src="../assets/images/delete.png" (click)="deleteEmployee(employee)" />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<modal id="custom-modal-1">
+  <h1 *ngIf="!selectedEmployee.serialNumber" class="text-center">Add New Employee</h1>
+  <h1 *ngIf="selectedEmployee.serialNumber" class="text-center">Update Employee</h1>
+  <employee (saveEmployee)="onEmployeeSave($event)"  [employeeModel]="selectedEmployee"></employee>
+</modal>

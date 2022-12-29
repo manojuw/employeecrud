@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+$base-spacing-unit: 24px;
+$half-spacing-unit: $base-spacing-unit / 2;
+
+$color-alpha: #1772FF;
+$color-form-highlight: #EEEEEE;
+
+
+
+.container {
+	max-width: 90%;
+	margin-right:auto;
+	margin-left:auto;
+	justify-content:center;
+	align-items:center;
+	min-height:100vh;
+	>h1{
+		text-align: center;
+		padding: 50px;
+		color: #0477ff;
+		font-size: 42px;
+	}
+}
+
+
+.header__item {
+	text-transform:uppercase;
+}
+
+.filter__link {
+	color:black;
+	text-decoration: none;
+	position:relative;
+	display:inline-block;
+	// padding-left:$base-spacing-unit;
+	// padding-right:$base-spacing-unit;
+	
+	&::after {
+		content:'';
+		position:absolute;
+		right:-($half-spacing-unit * 1.5);
+		color:white;
+		font-size:$half-spacing-unit;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	&.desc::after {
+		content: '(desc)';
+	}
+
+	&.asc::after {
+		content: '(asc)';
+	}
+	
+}
+
+
+// table css
+$table-border-color : gray;
+$body-bg : #bebebe;
+
+
+:host ::ng-deep .table {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 1rem;
+	text-align: start;
+	// Cells
+	> thead,
+	> tbody {
+		> tr {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 2px solid #cfc8c8;
+			> th {
+				width: 15%;
+				text-align: start;
+				padding:12px;
+			}
+			> td {
+				width: 15%;
+				text-align: start;
+				padding:12px;
+			}
+		  }
+	}
+
+	// Bottom align for column headings
+	> thead{
+	  border-top: 2px solid #cfc8c8;
+	  color: black;
+	  font-size: 23px;
+	  > tr{
+		padding: 10px !important;
+	  }
+	}
+  }
+
+  app-filter{
+	display: flex;
+	justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #cfc8c8;
+  }
+
+  .span-class{
+	background: #377239;
+	color: white;
+	padding: 5px 4px;
+	border-radius: 7px;
+  }
+
+  .text-center{
+	text-align: center;
+  }

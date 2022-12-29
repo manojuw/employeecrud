@@ -1,0 +1,12 @@
+.filter{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.filter-content{
+    width: 13%;
+    text-align: start;
+	>div{
+		margin-top: 9px;
+	}
+}

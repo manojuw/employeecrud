@@ -1,0 +1,24 @@
+<ng-container *ngFor="let column of columns" >
+        <div *ngIf="column.dataType==='none'" class="filter-content">
+        </div>
+        <div *ngIf="column.dataType==='string'" class="filter-content">
+            <input type="text" [(ngModel)]="column.selectedValue" />
+        </div>
+        <div *ngIf="column.dataType==='date'" class="filter-content">
+            <input type="date" [(ngModel)]="column.selectedValue" />
+        </div>
+        <div *ngIf="column.dataType==='select'" class="filter-content">
+            <select [(ngModel)]="column.selectedValue">
+                <option *ngFor="let val of column.values" [ngValue]="val.uId">{{val.name}}</option>
+            </select>
+        </div>
+        <div *ngIf="column.dataType==='number'" class="filter-content">
+            <input type="text" [(ngModel)]="column.selectedValue" />
+        </div>
+        <div *ngIf="column.dataType==='action'" class="filter-content">
+            <div>
+                <img alt="not found" src="../assets/images/filter.png" (click)="onFilter()">
+                <img alt="not found" src="../assets/images/clear.png" (click)="resetFilter()">
+            </div>
+        </div>
+</ng-container>
